@@ -15,6 +15,7 @@ public class CuentaCorriente extends Cuenta implements Serializable, Fecha {
         super(titular, saldo, dia, mes, ano);
         this.comision = comision;
         this.semestral = tipo;
+        this.setTipo(1);
         
     }
 

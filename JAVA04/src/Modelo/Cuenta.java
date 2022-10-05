@@ -13,6 +13,7 @@ public class Cuenta {
     private float saldo;
     private float saldoMinimo;
     private GregorianCalendar fecha;
+    private int tipoCuenta;
 
     
     public Cuenta(){
@@ -71,6 +72,15 @@ public class Cuenta {
         return saldoMinimo;
     }
 
+    public void setTipo(int tipoCuenta) {
+        this.tipoCuenta = tipoCuenta;
+    }
+
+    
+    public float getTipo() {
+        return tipoCuenta;
+    }
+    
     
     public void setSaldoMinimo(float saldoMinimo) {
         this.saldoMinimo = saldoMinimo;

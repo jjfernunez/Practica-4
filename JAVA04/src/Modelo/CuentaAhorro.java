@@ -5,12 +5,13 @@ import java.io.Serializable;
 public class CuentaAhorro extends Cuenta implements Serializable, Fecha{
     
     private int interesMensual;
-    private String sucursal;
+    private String sucursal = "IES MAJUELO" ;
     
-    public CuentaAhorro(String titular, float saldo, int dia, int mes, int ano, int interesAnual, String sucursal){
+    
+    public CuentaAhorro(String titular, float saldo, int dia, int mes, int ano){
         super(titular, saldo, dia, mes, ano);
-        this.interesMensual = interesAnual;
-        this.sucursal = sucursal;
+        this.setTipo(3);
+        
     }
     
     public int getInteresMensual() {
