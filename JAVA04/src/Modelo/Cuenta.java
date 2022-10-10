@@ -2,10 +2,6 @@ package Modelo;
 
 import java.util.GregorianCalendar;
 
-/**
- *
- * @author alumno
- */
 public class Cuenta {
     
     private int numero;
@@ -72,15 +68,6 @@ public class Cuenta {
         return saldoMinimo;
     }
 
-    public void setTipo(int tipoCuenta) {
-        this.tipoCuenta = tipoCuenta;
-    }
-
-    
-    public float getTipo() {
-        return tipoCuenta;
-    }
-    
     
     public void setSaldoMinimo(float saldoMinimo) {
         this.saldoMinimo = saldoMinimo;
@@ -94,6 +81,20 @@ public class Cuenta {
    
     public void setFecha(GregorianCalendar fecha) {
         this.fecha = fecha;
+    }
+
+    /**
+     * @return the tipoCuenta
+     */
+    public int getTipoCuenta() {
+        return tipoCuenta;
+    }
+
+    /**
+     * @param tipoCuenta the tipoCuenta to set
+     */
+    public void setTipoCuenta(int tipoCuenta) {
+        this.tipoCuenta = tipoCuenta;
     }
 
     

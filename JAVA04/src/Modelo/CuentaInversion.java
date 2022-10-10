@@ -11,14 +11,14 @@ public class CuentaInversion extends Cuenta implements Serializable, Fecha {
     
     public CuentaInversion(String titular, float saldo, int dia, int mes, int ano){
         super(titular, saldo, dia, mes , ano);
-       this.setTipo(2);
+       this.setTipoCuenta(2);
         
     }
 
  
     public int generarBenePer(){
         
-        return (int)Math.random()*(11)-(-10);
+        return (int)Math.random()*(11)-11;
         
     }
     

@@ -1,17 +1,13 @@
 package Modelo;
 
-import java.io.Serializable;
-
-public class CuentaAhorro extends Cuenta implements Serializable, Fecha{
+public class CuentaAhorro extends Cuenta implements Fecha{
     
-    private int interesMensual;
-    private String sucursal = "IES MAJUELO" ;
-    
+    private int interesMensual = 0;
+    private String sucursal = "IES MAJUELO";
     
     public CuentaAhorro(String titular, float saldo, int dia, int mes, int ano){
         super(titular, saldo, dia, mes, ano);
-        this.setTipo(3);
-        
+        this.setTipoCuenta(1); 
     }
     
     public int getInteresMensual() {

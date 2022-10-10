@@ -7,13 +7,29 @@ public class Lista<K> {
     
     
     private Nodo[] vector;
-    
+    private int posicion = 0;
+    private int size;
     
     public Lista(int tam){
         
         vector = new Nodo[tam];
-        
+        this.size = tam;
     }
+    
+    
+    public void avanzar(){
+       if(posicion < size){
+            posicion += 1;
+        } 
+    }
+    
+    public void retroceder(){
+        if(posicion > 0){
+            posicion -= 1;
+        }
+    }
+    
+    
     public void insertar(int id, K objeto ){
         
         vector[encontrarLugar()] = new Nodo(id, objeto);
@@ -48,5 +64,23 @@ public class Lista<K> {
                         
                 }
                return vec;
+    }
+
+    /**
+     * @return the posicion
+     */
+    public int getPosicion() {
+        return posicion;
+    }
+
+    public Nodo getNodo(int add){
+        return vector[posicion + add];
+    }
+    
+    /**
+     * @param aPosicion the posicion to set
+     */
+    public void setPosicion(int aPosicion) {
+        posicion = aPosicion;
     }
 }
