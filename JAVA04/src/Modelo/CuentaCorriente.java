@@ -11,17 +11,17 @@ public class CuentaCorriente extends Cuenta implements Serializable, Fecha {
     private float comision;
     private boolean semestral;
     
-    public CuentaCorriente(String titular, float saldo, int dia, int mes, int ano, float comision, boolean tipo){
+    public CuentaCorriente(String titular, float saldo, int dia, int mes, int ano,boolean tipo){
         super(titular, saldo, dia, mes, ano);
-        this.comision = comision;
+        this.comision = (int)Math.floor(Math.random()*(11));
         this.semestral = tipo;
         this.setTipoCuenta(3);
         
     }
 
-    public float calcularComision(){
+    public void calcular(){
        
-        return this.getSaldo() - comision; 
+       this.setSaldo(this.getSaldo() - comision); 
     }
     
     public float getComision() {

@@ -1,7 +1,9 @@
 package Controlador;
 
+import java.io.Serializable;
 
-public class Nodo<T> {
+
+public class Nodo<T> implements Serializable{
     
     private int numId;
     private T datos;
@@ -14,6 +16,10 @@ public class Nodo<T> {
         
     }
     
+     public void setDatos(T objeto){
+        this.datos = objeto;
+    }
+     
     public T getDatos(){
         return datos;
     }

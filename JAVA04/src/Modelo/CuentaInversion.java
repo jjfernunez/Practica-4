@@ -15,11 +15,15 @@ public class CuentaInversion extends Cuenta implements Serializable, Fecha {
         
     }
 
- 
-    public int generarBenePer(){
+    public void calcular(){
+       
+       this.setSaldo(this.getSaldo() +((this.getSaldo() * generarBenePer())/100)); 
+    }
+     
+    public float generarBenePer(){
         
-        return (int)Math.random()*(11)-11;
-        
+        this.benePer =  (int)Math.floor(Math.random()*(11)-11);
+        return benePer;
     }
     
     public float getBenePer() {

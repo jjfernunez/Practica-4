@@ -24,7 +24,7 @@ public class Lista<K> {
     }
     
     public void retroceder(){
-        if(posicion > 0){
+        if(posicion >= 0){
             posicion -= 1;
         }
     }
@@ -33,6 +33,13 @@ public class Lista<K> {
     public void insertar(int id, K objeto ){
         
         vector[encontrarLugar()] = new Nodo(id, objeto);
+        
+        
+    }
+    
+     public void insertar(Nodo objeto ){
+        
+        vector[encontrarLugar()] = objeto;
         
         
     }
@@ -82,5 +89,9 @@ public class Lista<K> {
      */
     public void setPosicion(int aPosicion) {
         posicion = aPosicion;
+    }
+    
+    public int getSize(){
+        return size;
     }
 }
