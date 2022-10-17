@@ -20,9 +20,16 @@ public class Visualizar extends javax.swing.JPanel  {
         Cuenta cuentaActual = (Cuenta)lista.getNodo(0).getDatos();
         GregorianCalendar fecha = new GregorianCalendar();
         
+        if(lista.getPosicion() == 0){
+            botonAnterior.setEnabled(false);
+        }
+         if(lista.getNodo(1)== null){
+            botonSiguiente.setEnabled(false);
+        }
+        
         if(cuentaActual instanceof CuentaAhorro){  
             titulo.setText("CUENTA AHORRO");
-            if(((CuentaAhorro) cuentaActual).getMes()+1 == fecha.get(Calendar.MONTH)){
+            if(((CuentaAhorro) cuentaActual).getDia() == fecha.get(Calendar.DATE)){
                 botonCalcular.setEnabled(true);
             }
             else{
@@ -215,7 +222,12 @@ public class Visualizar extends javax.swing.JPanel  {
                    titulo.setText("CUENTA CORRIENTE");
                    JOptionPane.showMessageDialog(saldoCuenta, "Se ha aplicacdo una comision de: "+((CuentaCorriente) cuen).getComision()+"%");
                }else{
+                   try{
                    ((CuentaInversion) cuen).calcular();
+                   }catch(ESaldoNoValido ex){
+                        JOptionPane.showMessageDialog(saldoCuenta, "El saldo no puede ser menor que el saldo minimo.(Saldo minimo: 0)");
+        
+                   }
                    titulo.setText("CUENTA INVERSION");
                    if(((CuentaInversion) cuen).getBenePer() >= 0){
                         JOptionPane.showMessageDialog(saldoCuenta, "Se ha aplicacdo un beneficio de: "+((CuentaInversion) cuen).getBenePer()+"%");
@@ -431,14 +443,13 @@ public class Visualizar extends javax.swing.JPanel  {
 
     private void botonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCalcularActionPerformed
         try{
-            if(Float.parseFloat(saldoCuenta.getText()) < 0){
-                JOptionPane.showMessageDialog(saldoCuenta, "El saldo no puede ser menor que el saldo minimo.(Saldo minimo: 0)");
-            }else{
+            
                 this.setVisible(false);
-            }
+            
         }catch(NumberFormatException e){
             this.setVisible(false);
         }
+           
     }//GEN-LAST:event_botonCalcularActionPerformed
 
 

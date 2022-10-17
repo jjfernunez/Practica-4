@@ -2,10 +2,6 @@ package Modelo;
 
 import java.io.Serializable;
 
-/**
- *
- * @author alumno
- */
 public class CuentaCorriente extends Cuenta implements Serializable, Fecha {
     
     private float comision;

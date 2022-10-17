@@ -1,10 +1,6 @@
-
 package Controlador;
 
-
 public class Lista<K>{
-    
-    
     
     private Nodo[] vector;
     private int posicion = 0;
@@ -65,7 +61,7 @@ public class Lista<K>{
             for (int j = 0; j < n - i - 1; j++)
                 try{
                 if (this.vector[j].getId() > this.vector[j + 1].getId()) {
-                    // swap arr[j+1] and arr[j]
+                    
                     Nodo temp = this.vector[j];
                     this.vector[j] = this.vector[j + 1];
                     this.vector[j + 1] = temp;

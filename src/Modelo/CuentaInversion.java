@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import Controlador.*;
 import java.io.Serializable;
 
 
@@ -15,14 +16,24 @@ public class CuentaInversion extends Cuenta implements Serializable, Fecha {
         
     }
 
-    public void calcular(){
+    public void calcular() throws ESaldoNoValido{
+        float saldo = this.getSaldo() +((this.getSaldo() * generarBenePer())/100);
+        
        
-       this.setSaldo(this.getSaldo() +((this.getSaldo() * generarBenePer())/100)); 
+           if(saldo < 0){
+               throw new ESaldoNoValido();
+           }
+           else{
+           this.setSaldo(saldo);    
+           }
+       
+     
+       
     }
      
     public float generarBenePer(){
         
-        this.benePer =  (int)Math.floor(Math.random()*(11)-11);
+        this.benePer =  (int)Math.floor(Math.random()*(-11-11+1)+11);
         return benePer;
     }
     
