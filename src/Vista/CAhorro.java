@@ -47,14 +47,14 @@ public class CAhorro extends javax.swing.JPanel {
                         String propietario = propCuenta.getText();
 
                     if(dia.equalsIgnoreCase("dd") || dia.equalsIgnoreCase("") || mes.equalsIgnoreCase("mm") || mes.equalsIgnoreCase("")|| anio.equalsIgnoreCase("yyyy") || anio.equalsIgnoreCase("")){                          
-                        lista.insertar(((int)Math.random()*100), new CuentaInversion(propietario, saldo,fecha.get(Calendar.DATE), fecha.get(Calendar.MONTH)+1, fecha.get(Calendar.YEAR)));
+                        lista.insertar(((int)Math.random()*100), new CuentaAhorro(propietario, saldo,fecha.get(Calendar.DATE), fecha.get(Calendar.MONTH)+1, fecha.get(Calendar.YEAR)));
                     }
                     else
                     {
                         int diaF = Integer.parseInt(dia);
                         int mesF = Integer.parseInt(mes);
                         int anioF = Integer.parseInt(anio);
-                        lista.insertar(((int)Math.random()*100), new CuentaInversion(propietario, saldo,diaF,mesF,anioF));
+                        lista.insertar(((int)Math.random()*100), new CuentaAhorro(propietario, saldo,diaF,mesF,anioF));
                     }
                     
                 }

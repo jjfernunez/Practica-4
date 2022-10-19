@@ -235,8 +235,7 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CargarActionPerformed
 
     private void CargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CargarMouseClicked
-        BarraProgreso barra = new BarraProgreso();
-        actualizarPanel(barra);
+        
          boolean continuar = true;
         try {
             
@@ -244,24 +243,47 @@ public class JFrame extends javax.swing.JFrame {
             File f = new File("datosLista.dat");
             FileInputStream fl = new FileInputStream("datosLista.dat");
             ObjectInputStream entrada = new ObjectInputStream(fl);
+            Cuenta cuenta;
+            
             while(continuar){
                 
-                    this.getLista().insertar((Nodo)entrada.readObject());
+                
+                
+                if(entrada.readObject() instanceof CuentaInversion){
+                    
+                    System.out.println("caballo");
+                    
+                    this.getLista().insertar((int)(Math.floor(Math.random()*100)), (CuentaInversion)entrada.readObject());
+                }
+                else if(entrada.readObject() instanceof CuentaCorriente){
+                    System.out.println("zebra");    
+                    
+                    this.getLista().insertar((int)(Math.floor(Math.random()*100)), (CuentaCorriente)entrada.readObject());
+                }
+                else{
+                    
+                    System.out.println("Mono");
+                    this.getLista().insertar((int)(Math.floor(Math.random()*100)), (CuentaAhorro)entrada.readObject());
+                }
+                        
+                       
+                
+                    
                 
                 
             }
             entrada.close();
         } catch (FileNotFoundException ex) {
-            barra.setVisible(false);
+          
             JOptionPane.showMessageDialog(BCuentaCorriente, "No se ha encontrador el fichero");
         } catch(ClassNotFoundException ex){
-            barra.setVisible(false);
+            
             JOptionPane.showMessageDialog(BCuentaCorriente, "Error con la clase");
         } catch(EOFException ex){
-            barra.setVisible(false);
+            
            continuar = false;
         } catch(IOException ex){
-            barra.setVisible(false);
+            
             JOptionPane.showMessageDialog(BCuentaCorriente, "Error con el archivo");
         }
     }//GEN-LAST:event_CargarMouseClicked
@@ -282,7 +304,7 @@ public class JFrame extends javax.swing.JFrame {
                     break;
                 }
                 else{
-                salida.writeObject(this.getLista().getNodo(i));
+                    System.out.println(this.getLista().getNodo(i).getDatos());
                 }
                
             }
