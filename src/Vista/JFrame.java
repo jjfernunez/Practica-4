@@ -231,24 +231,22 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_VisualizarActionPerformed
  
     private void CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarActionPerformed
-
-    }//GEN-LAST:event_CargarActionPerformed
-
-    private void CargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CargarMouseClicked
+ 
         
+      
          boolean continuar = true;
         try {
             
            
-            File f = new File("datosLista.dat");
+            
             FileInputStream fl = new FileInputStream("datosLista.dat");
             ObjectInputStream entrada = new ObjectInputStream(fl);
-            Cuenta cuenta;
+            
             
             while(continuar){
                 
                 
-                
+  
                 if(entrada.readObject() instanceof CuentaInversion){
                     
                     System.out.println("caballo");
@@ -286,6 +284,61 @@ public class JFrame extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(BCuentaCorriente, "Error con el archivo");
         }
+    }//GEN-LAST:event_CargarActionPerformed
+
+    private void CargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CargarMouseClicked
+           boolean continuar = true;
+        try {
+            
+           
+            
+            FileInputStream fl = new FileInputStream("datosLista.dat");
+            ObjectInputStream entrada = new ObjectInputStream(fl);
+            
+            
+            while(continuar){
+                
+                Object cuenta = entrada.readObject();
+  
+                if(cuenta instanceof CuentaInversion){
+                    
+                    
+                    
+                    this.getLista().insertar((int)(Math.floor(Math.random()*100)), (CuentaInversion)cuenta);
+                }
+                else if(cuenta instanceof CuentaCorriente){
+                     
+                    
+                    this.getLista().insertar((int)(Math.floor(Math.random()*100)), (CuentaCorriente)cuenta);
+                }
+                else{
+                    
+                   
+                    this.getLista().insertar((int)(Math.floor(Math.random()*100)), (CuentaAhorro)cuenta);
+                }
+                        
+                       
+                
+                    
+                
+                
+            }
+             JOptionPane.showMessageDialog(BCuentaCorriente, "Datos cargados");
+            entrada.close();
+        } catch (FileNotFoundException ex) {
+          
+            JOptionPane.showMessageDialog(BCuentaCorriente, "No se ha encontrador el fichero");
+        } catch(ClassNotFoundException ex){
+            
+            JOptionPane.showMessageDialog(BCuentaCorriente, "Error con la clase");
+        } catch(EOFException ex){
+            
+           continuar = false;
+        } catch(IOException ex){
+            
+            JOptionPane.showMessageDialog(BCuentaCorriente, "Error con el archivo");
+        }
+    
     }//GEN-LAST:event_CargarMouseClicked
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
@@ -304,10 +357,11 @@ public class JFrame extends javax.swing.JFrame {
                     break;
                 }
                 else{
-                    System.out.println(this.getLista().getNodo(i).getDatos());
+                    salida.writeObject(this.getLista().getNodo(i).getDatos());
                 }
                
             }
+             JOptionPane.showMessageDialog(BCuentaCorriente, "Datos guardados");
             salida.close();
          } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(BCuentaCorriente, "No se ha encontrador el fichero");
